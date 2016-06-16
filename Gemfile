@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'camaleon_cms', '~> 2.1.1.4'
 gem 'camaleon_ecommerce', github:  'owen2345/camaleon-ecommerce'
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -52,3 +53,5 @@ end
 #################### Camaleon CMS include all gems for plugins and themes #################### 
 require './lib/plugin_routes' 
 instance_eval(PluginRoutes.draw_gems)
+
+gem 'my_plugin', path:  '/home/denis/Desktop/ruby/Camaleon_CMS/apps/plugins/my_plugin/'

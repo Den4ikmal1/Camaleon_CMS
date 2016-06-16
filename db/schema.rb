@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212095328) do
+ActiveRecord::Schema.define(version: 20160615135033) do
 
   create_table "cama_comments", force: :cascade do |t|
     t.string   "author"
@@ -159,11 +159,56 @@ ActiveRecord::Schema.define(version: 20151212095328) do
     t.string   "confirm_email_token"
     t.datetime "confirm_email_sent_at"
     t.boolean  "is_valid_email",         default: true
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "cama_users", ["email"], name: "index_cama_users_on_email"
   add_index "cama_users", ["role"], name: "index_cama_users_on_role"
   add_index "cama_users", ["site_id"], name: "index_cama_users_on_site_id"
   add_index "cama_users", ["username"], name: "index_cama_users_on_username"
+
+  create_table "plugins_attacks", force: :cascade do |t|
+    t.string   "path"
+    t.string   "browser_key"
+    t.integer  "site_id"
+    t.datetime "created_at"
+  end
+
+  add_index "plugins_attacks", ["browser_key"], name: "index_plugins_attacks_on_browser_key"
+  add_index "plugins_attacks", ["path"], name: "index_plugins_attacks_on_path"
+  add_index "plugins_attacks", ["site_id"], name: "index_plugins_attacks_on_site_id"
+
+  create_table "plugins_contact_forms", force: :cascade do |t|
+    t.integer  "site_id"
+    t.integer  "count"
+    t.integer  "parent_id"
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+    t.text     "value"
+    t.text     "settings"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

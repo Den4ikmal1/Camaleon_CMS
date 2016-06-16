@@ -1,0 +1,17 @@
+{
+  "title": "My Plugin",
+  "descr": "",
+  "key": "my_plugin",
+  "helpers": [
+    "Plugins::MyPlugin::MainHelper"
+  ],
+  "hooks": {
+    "on_active": [
+      "my_plugin_on_active"
+    ],
+    "on_inactive": [
+      "my_plugin_on_inactive"
+    ]
+    //here you can add all your hooks (read documentation)
+  }
+}
