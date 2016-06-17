@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
     scope PluginRoutes.system_info["relative_url_root"] do
+          devise_for :users, class_name: "Plugins::MyPlugin::User", :module => :devise, :controllers => {  omniauth_callbacks: 'plugins/my_plugin/omniauth_callbacks' }
+          
+
       scope '(:locale)', locale: /#{PluginRoutes.all_locales}/, :defaults => {  } do
         # frontend
         namespace :plugins do
           namespace 'my_plugin' do
             get 'index' => 'front#index'
-            match 'auth/:provider/callback', via: [:get, :post], to: 'sessions#create'
-            match 'auth/failure', via: [:get, :post], to: redirect('/')
-            match 'signout', via: [:get, :post], to: 'sessions#destroy', as: 'signout'
+          
           end
         end
       end
@@ -22,9 +23,6 @@ Rails.application.routes.draw do
         end
       end
 
-      # main routes
-      #scope 'my_plugin', module: 'plugins/my_plugin/', as: 'my_plugin' do
-      #  Here my routes for main routes
-      #end
+    
     end
   end

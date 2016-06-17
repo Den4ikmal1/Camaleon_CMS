@@ -1,4 +1,5 @@
 class DeviseCreateUsers < ActiveRecord::Migration
+  drop_table :users
   def change
     create_table :users do |t|
       ## Database authenticatable

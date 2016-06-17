@@ -1,5 +1,3 @@
-
-
 require "my_plugin/engine"
 
 module MyPlugin

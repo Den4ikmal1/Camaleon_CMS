@@ -1,0 +1,12 @@
+class Plugins::MyPlugin::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+	include Devise::Controllers::Helpers
+	include Plugins::MyPlugin::MainHelper
+
+  def facebook
+    @user = Plugins::MyPlugin::User.find_for_oauth(request.env['omniauth.auth'])
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication
+      set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
+    end
+  end
+end

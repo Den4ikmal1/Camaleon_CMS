@@ -1,5 +1,7 @@
-OmniAuth.config.logger = Rails.logger
-
-Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, '209367729419838', "e5ace28577c2b9ef2ecb336bd188d0de"
+require 'devise/omniauth'
+OmniAuth.config.on_failure = Proc.new do |env|
+  env['devise.mapping'] = Devise.mappings[:user]
+  controller_name  = ActiveSupport::Inflector.camelize(env['devise.mapping'].controllers[:omniauth_callbacks])
+  controller_klass = ActiveSupport::Inflector.constantize("#{controller_name}Controller")
+  controller_klass.action(:failure).call(env)
 end

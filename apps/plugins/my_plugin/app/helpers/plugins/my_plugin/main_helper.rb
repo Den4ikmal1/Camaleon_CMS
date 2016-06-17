@@ -19,4 +19,16 @@ module Plugins::MyPlugin::MainHelper
   # plugin: plugin model
   def my_plugin_on_upgrade(plugin)
   end
+   def current_u
+    begin 
+      Plugins::MyPlugin::User.find(session["warden.user.user.key"][1][1]) 
+    rescue
+      nil
+    end 
+   end
+   def delete
+     session["warden.user.user.key"] = nil
+   end
+ 
+   
 end
