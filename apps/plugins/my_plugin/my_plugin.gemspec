@@ -23,4 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency "devise"
   s.add_dependency "omniauth"
   s.add_dependency "omniauth-facebook"
+  s.add_dependency "bootstrap-sass"
+  s.add_dependency "devise-bootstrap-views"
 end

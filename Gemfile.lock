@@ -11,7 +11,9 @@ PATH
   remote: apps/plugins/my_plugin
   specs:
     my_plugin (0.0.1)
+      bootstrap-sass
       devise
+      devise-bootstrap-views
       omniauth
       omniauth-facebook
       rails (~> 4.2.6)
@@ -61,6 +63,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    autoprefixer-rails (6.3.6)
+      execjs
     aws-sdk (2.3.6)
       aws-sdk-resources (= 2.3.6)
     aws-sdk-core (2.3.6)
@@ -70,6 +74,9 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     breadcrumbs_on_rails (2.3.1)
     builder (3.2.2)
     byebug (9.0.3)
@@ -111,6 +118,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise-bootstrap-views (0.0.8)
     draper (1.4.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -396,6 +404,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   byebug
   camaleon_cms (~> 2.1.1.4)
   camaleon_ecommerce!
